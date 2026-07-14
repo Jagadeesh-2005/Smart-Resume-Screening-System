@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ATS Resume Analysis Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h1>
+                📊 ATS Resume Dashboard
+            </h1>
+
+            <p class="subtitle">
+                {{ job_role }}
+            </p>
+
+        </div>
+
+        <a href="/"
+           class="back-btn">
+
+            + New Analysis
+
+        </a>
+
+    </div>
+
+    <!-- Score Cards -->
+
+    <div class="dashboard-cards">
+
+        <div class="score-card">
+
+            <h3>Similarity</h3>
+
+            <div class="score">
+                {{ similarity }}%
+            </div>
+
+        </div>
+
+        <div class="score-card">
+
+            <h3>Skill Match</h3>
+
+            <div class="score">
+                {{ skill_score }}%
+            </div>
+
+        </div>
+
+        <div class="score-card">
+
+            <h3>ATS Score</h3>
+
+            <div class="score">
+                {{ final_score }}%
+            </div>
+
+        </div>
+
+        <div class="score-card">
+
+            <h3>Recommendation</h3>
+
+            <div class="recommendation">
+                {{ recommendation }}
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Candidate Ranking -->
+
+    <div class="ranking-section">
+
+        <h2>
+            🏆 Candidate Ranking
+        </h2>
+
+        <table class="ranking-table">
+
+            <thead>
+
+            <tr>
+
+                <th>Rank</th>
+
+                <th>Resume</th>
+
+                <th>Similarity</th>
+
+                <th>Skill Match</th>
+
+                <th>ATS Score</th>
+
+                <th>Status</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for candidate in rankings %}
+
+            <tr>
+
+                <td>
+                    #{{ loop.index }}
+                </td>
+
+                <td>
+                    {{ candidate.name }}
+                </td>
+
+                <td>
+                    {{ candidate.similarity }}%
+                </td>
+
+                <td>
+                    {{ candidate.skill_score }}%
+                </td>
+
+                <td>
+                    {{ candidate.final_score }}%
+                </td>
+
+                <td>
+                    {{ candidate.recommendation }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Skills Section -->
+
+    <div class="dashboard-content">
+
+        <!-- Matched Skills -->
+
+        <div class="skills-panel">
+
+            <h2>
+                ✅ Matched Skills
+            </h2>
+
+            <div class="skills-list">
+
+                {% for skill in matched %}
+
+                <span class="skill-tag success">
+
+                    {{ skill }}
+
+                </span>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Missing Skills -->
+
+        <div class="skills-panel">
+
+            <h2>
+                ❌ Missing Skills
+            </h2>
+
+            <div class="skills-list">
+
+                {% for skill in missing %}
+
+                <span class="skill-tag danger">
+
+                    {{ skill }}
+
+                </span>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+

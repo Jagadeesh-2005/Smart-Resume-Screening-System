@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Resume Screening System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📄 Smart Resume Screening System</h1>
+
+    <form action="/analyze"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <label for="resume">
+            Upload Resume(s)
+        </label>
+
+        <input
+            type="file"
+            id="resume"
+            name="resume"
+            accept=".pdf"
+            multiple
+            required>
+
+        <label for="job_role">
+            Select Job Role
+        </label>
+
+        <select
+            id="job_role"
+            name="job_role"
+            required>
+
+            <option value="">
+                -- Select Job Role --
+            </option>
+
+            <option value="Machine Learning Engineer">
+                Machine Learning Engineer
+            </option>
+
+            <option value="Data Scientist">
+                Data Scientist
+            </option>
+
+            <option value="AI Engineer">
+                AI Engineer
+            </option>
+
+            <option value="Data Analyst">
+                Data Analyst
+            </option>
+
+            <option value="Python Developer">
+                Python Developer
+            </option>
+
+            <option value="Frontend Developer">
+                Frontend Developer
+            </option>
+
+            <option value="Backend Developer">
+                Backend Developer
+            </option>
+
+            <option value="Full Stack Developer">
+                Full Stack Developer
+            </option>
+
+            <option value="Software Engineer">
+                Software Engineer
+            </option>
+
+            <option value="DevOps Engineer">
+                DevOps Engineer
+            </option>
+
+            <option value="Cloud Engineer">
+                Cloud Engineer
+            </option>
+
+            <option value="Cyber Security Analyst">
+                Cyber Security Analyst
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Analyze Resumes
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
+
